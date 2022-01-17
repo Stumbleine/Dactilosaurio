@@ -1,0 +1,14 @@
+.navLink {
+  color: var(--text-color-light);
+  text-decoration: none;
+}
+#appBar {
+  color: var(--text-color-light);
+  /*  background-color: rgb(46, 73, 73); */
+}
+#logo {
+  color: var(--text-color-light);
+  font-weight: 900;
+  font-size: var(--h1-font-size);
+  letter-spacing: 0.7px;
+}

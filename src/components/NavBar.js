@@ -12,7 +12,21 @@ import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import { NavLink } from "react-router-dom";
-import "./NavBarStyle.css";
+import "../styles/NavBarStyle.css";
+import {
+  deepPurple,
+  deepOrange,
+  grey,
+  teal,
+  orange,
+  amber,
+  brown,
+} from "@mui/material/colors";
+const textColorLight = grey[100],
+  textColor = grey[900],
+  textColorGrey = grey[600];
+const primaryColor = teal[800],
+  secondaryColor = orange[1000];
 
 export default function NavBar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -21,33 +35,30 @@ export default function NavBar() {
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
   };
-  const handleOpenUserMenu = (event) => {
-    setAnchorElUser(event.currentTarget);
-  };
 
   const handleCloseNavMenu = () => {
     setAnchorElNav(null);
   };
 
-  const handleCloseUserMenu = () => {
-    setAnchorElUser(null);
-  };
   return (
-    <AppBar position="static">
+    <AppBar
+      id="appBar"
+      position="static"
+      sx={{ color: grey[100], background: primaryColor }}
+    >
       <Container maxWidth="xl">
-        <Toolbar disableGutters>
+        <Toolbar disableGutters sx={{ background: grey[700] }}>
           {/* LOGO para grandes pantallas */}
           <Typography
             variant="h6"
             noWrap
             component="div"
+            id="logo"
             sx={{
               mr: 2,
               display: {
                 xs: "none",
                 md: "flex",
-                color: "black",
-                fontWeight: "900",
               },
             }}
           >
@@ -93,9 +104,13 @@ export default function NavBar() {
             variant="h6"
             noWrap
             component="div"
-            sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}
+            id="logo"
+            sx={{
+              flexGrow: 1,
+              display: { xs: "flex", md: "none" },
+            }}
           >
-            Dactilosario-
+            Dactilosario
           </Typography>
           {/* Contenendor de pestañas/pagesLinks */}
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
@@ -105,12 +120,12 @@ export default function NavBar() {
               </NavLink>
             </Button>
             <Button sx={{ my: 2, color: "white", display: "block" }}>
-              <NavLink className="navLink" to="/Practice">
+              <NavLink className="navLink" to="/multiplayer">
                 Multijugador
               </NavLink>
             </Button>
             <Button sx={{ my: 2, color: "white", display: "block" }}>
-              <NavLink className="navLink" to="/multiplayer">
+              <NavLink className="navLink" to="/practice">
                 Practicar
               </NavLink>
             </Button>
