@@ -1,27 +1,62 @@
-import { Card, Container, Typography, CardContent } from "@mui/material";
-import { color } from "@mui/system";
-
+import { Card, Typography, CardContent, Box } from "@mui/material";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { deepPurple, grey } from "@mui/material/colors";
+import Start from "./Start";
+import { changeStartState } from "../store/game/gameSlice";
+import { setParagraph } from "../store/game/gameSlice";
 
 export default function Paragraph() {
   const textColorLight = grey[100],
     textColor = grey[900],
     textColorGrey = grey[600];
-  const paragraph =
-    "Ella es siempre, para Sherlock Holmes, la mujer Rara vez le he oído hablar de ella aplicándole otro nombre. A los ojos de Sherlock Holmes, eclipsa y sobrepasa a todo su sexo. No es que haya sentido por Irene Adler nada que se parezca al amor. Su inteligencia fría, llena de precisión, pero admirablemente equilibrada, era en extremo opuesta a cualquier clase de emociones. Yo le considero como la máquina de razonar y de observar más perfecta que ha conocido el mundo; pero como enamorado, no habría sabido estar en su papel. Si alguna vez hablaba de los sentimientos más tiernos, lo hacía con mofa y sarcasmo. Admirables como tema para el observador, excelentes para descorrer el velo de los móviles y de los actos de las personas.";
+
+  const blurStyle = {
+    blur: {
+      filter: "blur(5px)",
+      background: grey[400],
+    },
+  };
+  //const { list: users } = useSelector((state) => state.users);
+  const startGame = useSelector((state) => state.game.start);
+  const paragraph = useSelector((state) => state.game.paragraph.value);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(setParagraph());
+    dispatch(changeStartState(false));
+  }, []);
+
   return (
-    <Container sx={{ mt: 1, background: "pink", minWidth: 650 }} disableGutters>
-      <Card
+    <Typography
+      component="div"
+      sx={{ mt: 1, background: "pink", position: "relative" }}
+    >
+      <Box sx={{ position: "relative" }}>
+        <Card
+          sx={{
+            minHeight: 200,
+            color: textColor,
+            display: "flex",
+          }}
+        >
+          <CardContent>
+            <div style={!startGame ? blurStyle.blur : {}}>
+              <Typography sx={{ fontSize: 22 }}>{paragraph}</Typography>
+            </div>
+          </CardContent>
+        </Card>
+      </Box>
+      <Box
         sx={{
-          minHeight: 200,
-          color: textColor,
-          display: "flex",
+          zIndex: "tooltip",
+          top: "50%",
+          left: "50%",
+          position: "absolute",
+          transform: "translate(-50%, -50%)",
         }}
       >
-        <CardContent>
-          <Typography sx={{ fontSize: 18 }}>{paragraph}</Typography>
-        </CardContent>
-      </Card>
-    </Container>
+        {!startGame ? <Start></Start> : ""}
+      </Box>
+    </Typography>
   );
 }

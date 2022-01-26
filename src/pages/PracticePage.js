@@ -18,7 +18,7 @@ export default function PracticePage() {
       <RaceTrack></RaceTrack>
       <Box>
         <Grid container>
-          <Grid item lg={9} sx={{ background: " blue", p: 1 }}>
+          <Grid item lg={9} md={12} sx={{ background: " blue", p: 1 }}>
             <Paragraph></Paragraph>
             <InputWrite></InputWrite>
           </Grid>
