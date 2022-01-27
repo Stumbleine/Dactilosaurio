@@ -33,7 +33,7 @@ export default function InputWrite() {
   ///
   const  comparation = (e) =>{
     setTextValue(e.target.value)
-    console.log('Nro de veces llamados',error);
+    //console.log('Nro de veces llamados',error);
 
     let wInput = e.target.value;
     let wChars = word.split('')
@@ -49,18 +49,18 @@ export default function InputWrite() {
     }else{
       //palabra incompleta
       if(wInput.length <= word.length){
-        console.log('el input es menorIgual')
+        //console.log('el input es menorIgual')
         if( wInput === word ){
-          console.log('el input es igual a word',{wInput,word})
+          //console.log('el input es igual a word',{wInput,word})
           setComplete(true);
           setError(false)
         }else{
           //
-          console.log('el input no es igual')
+          //console.log('el input no es igual')
             let i = 0;
             let previusError=false;
             for( let wic of wInput ){
-              console.log('entro a for =>', i)
+              //console.log('entro a for =>', i)
               let wChar = wChars[i]
               if(previusError ===true){break}
               if(wic === wChars[i]){
@@ -68,10 +68,10 @@ export default function InputWrite() {
                 setError(false);
                 setComplete(false);
               }else{
-                console.log('antes:',error) 
+                //console.log('antes:',error) 
                 previusError=true;   
                 setError(true);           
-                console.log('Hay error!!!!! ',{wic,wChar,error });
+               console.log('Hay error!!!!! ',{wic,wChar,error });
               }
               i++;
             }
@@ -84,7 +84,6 @@ export default function InputWrite() {
       }
     }
     //if(textValue===''){setError(false)}
-                console.log('Hay error!!!!! ',{error });
 }
 const [index,setIndex] = React.useState(1)
 
@@ -110,16 +109,20 @@ function changeNextWord(){
       >
         <Box sx={{ width: "100%", display: "flex", mt:1,ml:1}}  >
               <TextField
-              helperText={error? 'Es necesario el titulo':''}
+              helperText={error? 'Escriba correctamente la palabra: '+ word:''}
               disabled={end}
               error={error}
               label="Escriba la palabra en azul."
               type="text"
               fullWidth
               variant="outlined"
-              sx={{fontSize:'35'}}
+              sx={{fontSize:'30ch'}}
+              fontSize='30ch'
               value={textValue}
               onChange={comparation}
+              InputProps={{ style: { fontSize: 20 } }}
+              InputLabelProps={{style:{fontSize:20}}}
+              FormHelperTextProps={{style:{fontSize:16,fontWeight:'700'}}}
             />
           <Box
             sx={{
