@@ -12,11 +12,19 @@ import {
 } from "@mui/material";
 import { indigo, grey, orange } from "@mui/material/colors";
 import SendTextForm from "./SendTextForm";
+import { useDispatch, useSelector } from "react-redux";
 const textColorLight = grey[100],
   textColor = grey[900],
   textColorGrey = grey[600];
 
+
+
 export default function Results() {
+      const paragraph = useSelector((state) => state.game.paragraph);
+      const statsGame = useSelector((state) => state.game.statsGame);
+      React.useEffect(() => {
+        console.log("RESULTS: paragraph",paragraph)
+    }, [paragraph]);
   const typographyStyle = {
     name: {
       fontSize: 18,
@@ -57,9 +65,9 @@ export default function Results() {
               component="div"
               sx={{ lineHeight: 1, fontWeight: "600", color: orange[600] }}
             >
-              Las Aventuras de Sherlock Holmes aasasas asdas asdasd hello hello
+              {paragraph.titleBook}
             </Typography>
-            <Typography>Arthur Conan Doyle</Typography>
+            <Typography>{paragraph.author}</Typography>
           </Box>
           <Box
             sx={{
@@ -107,37 +115,37 @@ export default function Results() {
                 <Typography style={typographyStyle.name}>
                   Puesto:
                   <Typography variant="p" style={typographyStyle.value}>
-                    #2
+                    #{statsGame.position}
                   </Typography>
                 </Typography>
                 <Typography style={typographyStyle.name}>
                   Time:
                   <Typography variant="p" style={typographyStyle.value}>
-                    04:45
+                    {statsGame.time}
                   </Typography>
                 </Typography>
                 <Typography style={typographyStyle.name}>
                   Pulsaciones:
                   <Typography variant="p" style={typographyStyle.value}>
-                    124
+                    {statsGame.pulsations}
                   </Typography>
                 </Typography>
                 <Typography style={typographyStyle.name}>
                   P.P.M.:
                   <Typography variant="p" style={typographyStyle.value}>
-                    145
+                    {statsGame.ppm}
                   </Typography>
                 </Typography>
                 <Typography style={typographyStyle.name}>
                   W.P.M:
                   <Typography variant="p" style={typographyStyle.value}>
-                    66
+                    {statsGame.wpm}
                   </Typography>
                 </Typography>
                 <Typography style={typographyStyle.name}>
                   Errors:
                   <Typography variant="p" style={typographyStyle.value}>
-                    6% (13)
+                    {statsGame.errors}
                   </Typography>
                 </Typography>
               </Box>

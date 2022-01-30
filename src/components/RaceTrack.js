@@ -5,7 +5,7 @@ export default function RaceTrack() {
     <Container maxWidth="xl" sx={{ mt: 1 }} disableGutters>
       <Card
         sx={{
-          minHeight: 380,
+          minHeight: 395,
 
           display: "flex",
         }}

@@ -13,6 +13,7 @@ const initialState = {
     },
     statsGame:{
         time:5,
+        position:1,
         pulsations:null,
         ppm:null,
         wpm:null,
@@ -33,7 +34,7 @@ const gameSlice = createSlice({
             console.log("elegido:",p)
             state.paragraph.value = p.value;
             state.paragraph.author = p.author;
-            state.paragraph.titleBook = p.author.titleBook;
+            state.paragraph.titleBook = p.titleBook;
             state.paragraph.wordsArray = state.paragraph.value.split(" ");
             state.paragraph.word = state.paragraph.wordsArray[0];
             console.log(state.paragraph.wordsArray)

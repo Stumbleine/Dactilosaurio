@@ -1,7 +1,7 @@
 import { Card, Container } from "@mui/material";
 
 export default function ChatComponent(props) {
-  const { defaultHeight = 335 } = props;
+  const { defaultHeight = 300 } = props;
   return (
     <Container sx={{ mt: 1 }} disableGutters>
       <Card
