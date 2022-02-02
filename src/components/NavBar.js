@@ -47,7 +47,7 @@ export default function NavBar() {
       sx={{ color: grey[100], background: primaryColor }}
     >
       <Container maxWidth="xl">
-        <Toolbar disableGutters sx={{ background: grey[700] }}>
+        <Toolbar disableGutters>
           {/* LOGO para grandes pantallas */}
           <Typography
             variant="h6"

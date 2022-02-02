@@ -5,14 +5,11 @@ import { deepPurple, grey } from "@mui/material/colors";
 import Start from "./Start";
 import { changeStartState } from "../store/game/gameSlice";
 import { setParagraph } from "../store/game/gameSlice";
-
+const textColorLight = grey[100],
+  textColor = grey[900],
+  textColorGrey = grey[600];
 export default function Paragraph() {
-  const textColorLight = grey[100],
-    textColor = grey[900],
-    textColorGrey = grey[600];
-
   const paragraphRef = useRef();
-  const [textP, setTextP] = React.useState("");
   const [pos, setPos] = React.useState(0);
   const blurStyle = {
     blur: {
@@ -26,29 +23,29 @@ export default function Paragraph() {
   const paragraph = useSelector((state) => state.game.paragraph.value);
   const word = useSelector((state) => state.game.paragraph.word);
   //const bclose = </b>;
-  const p =
-    "Sherlock Holmes tomó el frasco de lade la repisa de la chimenea y sacó su jeringuilla hipodérmica de su fino estuche de tafilete.";
 
   useEffect(() => {
     setPos(0);
-    console.log("SetPOS0:", pos);
   }, []);
 
   useEffect(() => {
     if (paragraph !== "") {
       let l = word.length;
-      console.log("!textP==>", { paragraph, pos, l });
+      /*       console.log("!textP==>", { paragraph, pos, l }); */
       let limInf = paragraph.slice(0, pos);
       let limSup = paragraph.slice(pos + l);
-      console.log("CORTADOS", { limInf, limSup });
+      /*       console.log("CORTADOS", { limInf, limSup }); */
       let newTextEl = "";
       newTextEl = newTextEl.concat(
+        '<u style="color: #2EBB4D; text-decoration:none;" >',
         limInf,
+        "</u>"
+      );
+      newTextEl = newTextEl.concat(
         '<u style="color: #2962ff;font-weight:bold;" >',
         word
       );
       newTextEl = newTextEl.concat("</u>", limSup);
-      console.log("Nuevoooo", newTextEl);
       paragraphRef.current.innerHTML = newTextEl;
       setPos(pos + l + 1);
     }
