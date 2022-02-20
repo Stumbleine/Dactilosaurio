@@ -30,7 +30,7 @@ export default function PracticePage() {
     dispatch(changeStartState(false));
   }, []);
   return (
-    <Container maxWidth="xl" sx={{ mt: 2, background: grey[300] }}>
+    <Container maxWidth="xl" sx={{ mt: 2 }}>
       <Box>
         {" "}
         <ToolbarInfo></ToolbarInfo>
@@ -57,7 +57,7 @@ export default function PracticePage() {
         {end === false ? (
           <Box>
             <Paragraph></Paragraph>
-            <Box sx={{ display: "flex", width: "100%", background: "pink" }}>
+            <Box sx={{ display: "flex", width: "100%" }}>
               <InputWrite></InputWrite>
 
               <Timer></Timer>
